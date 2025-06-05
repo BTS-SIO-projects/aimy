@@ -12,18 +12,18 @@ function PasswordCache($st)
 
 if (isset($_POST['action'])) {
 
-    $patientController = new PatientController($bdd);
+    $patientController = new PatientController($bdd);  
 
-    switch ($_POST['action']) {
+    switch ($_POST['action']) {  
 
         case 'inscription':
-            $patientController->create();
+            $patientController->create();  
             break;
         case 'supprimer':
-            $patientController->delete();
+            $patientController->delete();  
             break;
         case 'connexion':
-            $patientController->connexion();
+            $patientController->connexion();  
             break;
         default:
             # code...
@@ -31,7 +31,7 @@ if (isset($_POST['action'])) {
     }
 }
 
-class PatientController
+class PatientController  
 {
     private $patient;
 
