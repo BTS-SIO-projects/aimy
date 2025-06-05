@@ -83,7 +83,7 @@ class PatientController
                                 $_SESSION['telephone'] = $telephone;
                                 $_SESSION['lieu'] = $adresse;
 
-                                header('Location:http://localhost/aimy_new/');
+                                header('Location: aimy_new/');
                             } else {
                                 echo "Les mots de passes ne correspondent pas.";
                             }
