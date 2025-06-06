@@ -1,10 +1,11 @@
 <?php
-session_start();
+@session_start();
 
-include('../../model/medecinModel.php');
-include('../../model/lieuModel.php');
-include('../../model/specialiteModel.php');
-include('../../bdd/bdd.php');
+@include('../../bdd/bdd.php');
+@include('../../model/patientModel.php');
+@include('../../model/lieuModel.php');
+@include('../../model/specialiteModel.php');
+@include('../../model/medecinModel.php');
 
 $lieu = new Lieu($bdd);
 $specialite = new Specialite($bdd);

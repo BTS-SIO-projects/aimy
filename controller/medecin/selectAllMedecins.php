@@ -1,8 +1,8 @@
 <?php
 
-include('model/medecinModel.php');
-include('model/patientModel.php');
-include('bdd/bdd.php');
+@include('../../bdd/bdd.php');
+@include('../../model/medecinModel.php');
+@include('../../model/patientModel.php');
 
 $medecin = new Medecin($bdd);
 $lesMedecins = $medecin->selectAllMedecins();

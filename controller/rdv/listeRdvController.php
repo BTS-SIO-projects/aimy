@@ -1,11 +1,11 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/patientModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/rdvModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/medecinModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/lieuModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/bdd/bdd.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/documentModel.php');
+@include('../../bdd/bdd.php');
+@include('../../model/patientModel.php');
+@include('../../model/rdvModel.php');
+@include('../../model/medecinModel.php');
+@include('../../model/lieuModel.php');
+@include('../../model/documentModel.php');
 
 $rdv = new Rdv($bdd);
 $patient = new Patient($bdd);

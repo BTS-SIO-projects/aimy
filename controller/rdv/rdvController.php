@@ -2,9 +2,10 @@
 
 use Dom\Document;
 
-include('../../model/rdvModel.php');
 include('../../bdd/bdd.php');
-include('../medecin/medecinController.php');
+include('../../model/rdvModel.php');
+include('../../model/lieuModel.php');
+include('../../model/specialiteModel.php');
 
 if (isset($_POST['action'])) {
 

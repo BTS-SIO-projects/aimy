@@ -1,10 +1,10 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/documentModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/rdvModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/medecinModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/patientModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy/bdd/bdd.php');
+@include('../../bdd/bdd.php');
+@include('../../model/documentModel.php');
+@include('../../model/rdvModel.php');
+@include('../../model/medecinModel.php');
+@include('../../model/patientModel.php');
 
 // créer un objet $rdv grace au rdvModel, stocker les rdv dan $lesRdvs
 $rdv = new Rdv($bdd);
@@ -48,7 +48,7 @@ class DocumentController
         $fileExtension = pathinfo($originalFileName, PATHINFO_EXTENSION);
 
         $newFileName = 'document_' . uniqid() . '.' . $fileExtension;
-        $destinationPath = $_SERVER['DOCUMENT_ROOT'] . '/aimy/document/' . $newFileName;
+        $destinationPath = '../../document/' . $newFileName;
 
         // Déplacer le fichier vers le dossier cible
         if (move_uploaded_file($tmpFilePath, $destinationPath)) {

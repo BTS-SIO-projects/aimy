@@ -1,10 +1,3 @@
-<?php
-
-include('controller/specialite/specialiteController.php');
-include('controller/lieu/selectAllLieux.php');
-
-?>
-
 <div class="inscription">
     <a id="patientLink" href="index.php?page=patient">Un patient ? Connectez-vous</a>
 
