@@ -63,7 +63,9 @@ class DocumentController
             // Insérer le document dans la base de données avec le bon chemin
             $this->document->ajouterDocument($idrdv, $description, $fileType, 'document/' . $newFileName, $datedepot, $idmedecin, $idpatient);
 
-            header('Location: http://localhost/aimy_new/?success=document_added');
+            //    header('Location: http://localhost/aimy_new/?success=document_added');
+            header("Location: ../../index.php?success=document_added");
+
             exit();
         } else {
             die("Erreur lors du téléchargement du fichier.");
@@ -78,6 +80,7 @@ class DocumentController
         $this->document->supprimerDocument($_POST['iddocument']);
 
         //redirection 
-        header('Location:http://localhost/aimy_new/');
+        //   header('Location:http://localhost/aimy_new/');
+        header("Location: ../../index.php");
     }
 }

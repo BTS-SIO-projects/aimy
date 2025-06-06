@@ -33,7 +33,8 @@ if (isset($_POST['action'])) {
             if (isset($_POST['idrdv']) && !empty($_POST['idrdv'])) {
                 $document->supprimerDocuments($_POST['idrdv']);
                 $rdv->supprimerRdv($_POST['idrdv']);
-                header('Location:http://localhost/aimy_new/index.php?page=liste_rdv');
+                //                header('Location:http://localhost/aimy_new/index.php?page=liste_rdv');
+                header("Location: ../../index.php?page=liste_rdv");
             }
             break;
         case 'valider':
@@ -51,7 +52,9 @@ if (isset($_POST['action'])) {
             break;
     }
 
-    header('Location:http://localhost/aimy_new/index.php?page=liste_rdv');
+    //    header('Location:http://localhost/aimy_new/index.php?page=liste_rdv');
+    header("Location: ../../index.php?page=liste_rdv");
+
     exit;
 } else {
     //   echo "Aucune action reçue.";
