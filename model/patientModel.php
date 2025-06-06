@@ -19,7 +19,7 @@ class Patient
         return $lesPatients;
     }
 
-    public function selectMesPatients() 
+    public function selectMesPatients()
     {
         // On récupère l'id du médecin connecté
         $idMedecin = $_SESSION['idmedecin'];
@@ -44,7 +44,7 @@ class Patient
         return $mesPatients;
     }
 
-    public function selectWherePatient($idpatient) 
+    public function selectWherePatient($idpatient)
     {
         $requete = "select * from patient where idpatient=" . $idpatient . ";";
         $select = $this->bdd->prepare($requete);

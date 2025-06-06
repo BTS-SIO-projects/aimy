@@ -1,6 +1,3 @@
-<?php
-include('controller/rdv/listeRdvController.php');
-?>
 <div class="profile-header">
     <?php if (isset($_SESSION['idmedecin'])) {  ?>
         <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['photo']); ?>" alt="Photo de Profil" width="100" height="100">

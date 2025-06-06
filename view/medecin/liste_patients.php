@@ -1,7 +1,3 @@
-<?php
-
-include('controller/medecin/selectAllMedecins.php');
-?>
 <center class="table-container">
     <?php if (count($mesPatients) > 0) { ?>
         <h3>Mes Patients</h3>

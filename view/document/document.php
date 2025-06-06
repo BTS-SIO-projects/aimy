@@ -1,7 +1,3 @@
-<?php
-include("controller/document/documentController.php");
-?>
-
 <div id="document-container">
     <h1 id="document-title">Gérez vos documents médicaux</h1>
     <p id="document-description">

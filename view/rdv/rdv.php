@@ -1,9 +1,3 @@
-<?php
-include('controller/lieu/selectAllLieux.php');
-include('controller/medecin/selectAllMedecins.php');
-
-?>
-
 <div class="rdv">
     <a id="listeRdvLink" href="index.php?page=liste_rdv">Liste de vos rendez-vous</a><br>
     <h2 class="form-title">Ajout d'un rendez-vous</h2>

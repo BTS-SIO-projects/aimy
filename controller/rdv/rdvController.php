@@ -2,9 +2,10 @@
 
 use Dom\Document;
 
-include('../../model/rdvModel.php');
 include('../../bdd/bdd.php');
-include('../medecin/medecinController.php');
+include('../../model/rdvModel.php');
+include('../../model/lieuModel.php');
+include('../../model/specialiteModel.php');
 
 if (isset($_POST['action'])) {
 
@@ -43,7 +44,7 @@ class RdvController
 
         if ($existOne || $existTwo) {
             var_dump("rdv existant");
-            header('Location: ../../');
+            header('Location: ../../index.php');
         } else {
             $this->rdv->ajouterRdv($_POST);
             header('Location: ../../index.php?page=liste_rdv');
