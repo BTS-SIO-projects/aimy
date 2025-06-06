@@ -43,10 +43,10 @@ class RdvController
 
         if ($existOne || $existTwo) {
             var_dump("rdv existant");
-            header('Location:http://localhost/aimy_new/');
+            header('Location: ../../');
         } else {
             $this->rdv->ajouterRdv($_POST);
-            header('Location:http://localhost/aimy_new/index.php?page=liste_rdv');
+            header('Location: ../../index.php?page=liste_rdv');
         }
     }
     /*
