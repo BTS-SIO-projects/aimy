@@ -70,8 +70,7 @@ class MedecinController
                         //insertion du medecin
                         $this->medecin->ajouterMedecin($_POST, $hashedPassword, $fileContent);
                         echo ("<p> Votre demande d'inscription sera prise en charge sous 48 heures.</p>");
-                        //             header('Location: http://localhost/aimy_new/?success=medecin_added');
-                        header("Location: ../../index.php?success=medecin_added");
+                        header('Location: ../../index.php?success=medecin_added');
                         exit();
                     } else {
                         echo "Les mots de passes ne correspondent pas.";
@@ -95,8 +94,7 @@ class MedecinController
         $this->medecin->supprimerMedecin($_POST['ID_Medecin']);
 
         //redirection 
-        // header('Location:http://localhost/aimy_new/');
-        header("Location: ../../index.php");
+        header('Location: ../../index.php');
     }
 
     public function connexion($lieu, $specialite)

@@ -83,8 +83,7 @@ class PatientController
                                 $_SESSION['telephone'] = $telephone;
                                 $_SESSION['lieu'] = $adresse;
 
-                                //            header('Location:http://localhost/aimy_new/');
-                                header("Location: ../../index.php");
+                                header('Location: ../../index.php');
                             } else {
                                 echo "Les mots de passes ne correspondent pas.";
                             }
@@ -116,8 +115,7 @@ class PatientController
         $this->patient->supprimerPatient($_POST['ID_Medecin']);
 
         //redirection 
-        //       header('Location:http://localhost/aimy_new/');
-        header("Location: ../../index.php");
+        header('Location: ../../index.php');
     }
 
     public function connexion()

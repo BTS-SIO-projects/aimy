@@ -47,8 +47,7 @@ switch ($page) {
     case 'deconnexion':
         session_destroy();
         unset($_SESSION['numeroSecu']);
-        //     header('Location:http://localhost/aimy_new/');
-        header("Location: index.php");
+        header('Location: index.php');
         break;
     default:
         include('view/commun/accueil.php');
