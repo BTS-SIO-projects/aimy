@@ -76,6 +76,7 @@ class PatientController
                                 //une fois ajouté le patient on recupere les info du patient avec son email
                                 $getPatient = $this->patient->selectPatientByEmail($email);
                                 $_SESSION['idpatient'] = $getPatient['idpatient'];
+                                $_SESSION['numeroSecu'] = $unPatient['numeroSecu'];
                                 //creation d'une session
                                 $_SESSION['nom'] = $nom;
                                 $_SESSION['prenom'] = $prenom;
