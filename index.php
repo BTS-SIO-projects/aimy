@@ -43,10 +43,25 @@ switch ($page) {
     case 'profil':
         include('view/commun/profil.php');
         break;
+    case 'admin':
+        include('controller/admin/adminController.php');
+        break;
+
+    case 'admin_login':
+        include('view/admin/admin_login.php');
+        break;
+
+    case 'admin_dashboard':
+        include('view/admin/admin_dashboard.php');
+        break;
+
 
     case 'deconnexion':
         session_destroy();
         unset($_SESSION['numeroSecu']);
+        unset($_SESSION['idpatient']);
+        unset($_SESSION['idmedecin']);
+        unset($_SESSION['is_admin']);
         //     header('Location:http://localhost/aimy_new/');
         header("Location: index.php");
         break;

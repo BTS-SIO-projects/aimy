@@ -70,7 +70,7 @@ class MedecinController
                         //insertion du medecin
                         $this->medecin->ajouterMedecin($_POST, $hashedPassword, $fileContent);
                         echo ("<p> Votre demande d'inscription sera prise en charge sous 48 heures.</p>");
-                        //             header('Location: http://localhost/aimy_new/?success=medecin_added');
+                        //             header('Location: http://localhost/aimy/?success=medecin_added');
                         header("Location: ../../index.php?success=medecin_added");
                         exit();
                     } else {
@@ -95,7 +95,7 @@ class MedecinController
         $this->medecin->supprimerMedecin($_POST['ID_Medecin']);
 
         //redirection 
-        // header('Location:http://localhost/aimy_new/');
+        // header('Location:http://localhost/aimy/');
         header("Location: ../../index.php");
     }
 

@@ -1,11 +1,29 @@
+<!-- view/medecin/liste_patients.php -->
 <?php
-
 include('controller/medecin/selectAllMedecins.php');
 ?>
 <center class="table-container">
+    <h3>Mes Patients</h3>
+    
+    <!-- Formulaire de recherche -->
+    <div class="search-container">
+        <form method="GET" action="">
+            <input type="hidden" name="page" value="liste_patients">
+            <input type="text" name="search" placeholder="Rechercher par nom ou prénom..." 
+                   value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+            <button type="submit">Rechercher</button>
+            <?php if(isset($_GET['search']) && !empty($_GET['search'])): ?>
+                <a href="?page=liste_patients" class="btn btn-secondary btn-sm">Réinitialiser</a>
+            <?php endif; ?>
+        </form>
+    </div>
+    
     <?php if (count($mesPatients) > 0) { ?>
-        <h3>Mes Patients</h3>
-        <p>Nombre total de patients : <strong><?php echo count($mesPatients); ?></strong></p>
+        <p>Nombre total de patients : <strong><?php echo count($mesPatients); ?></strong>
+        <?php if(isset($_GET['search']) && !empty($_GET['search'])): ?>
+            <small>(Filtré par : "<?php echo htmlspecialchars($_GET['search']); ?>")</small>
+        <?php endif; ?>
+        </p>
 
         <table>
             <tr>
@@ -25,6 +43,10 @@ include('controller/medecin/selectAllMedecins.php');
             <?php } ?>
         </table>
     <?php } else { ?>
-        <h1>Aucun patient pour le moment</h1>
+        <p>Aucun patient trouvé
+        <?php if(isset($_GET['search']) && !empty($_GET['search'])): ?>
+            pour la recherche "<?php echo htmlspecialchars($_GET['search']); ?>"
+        <?php endif; ?>
+        </p>
     <?php } ?>
 </center>

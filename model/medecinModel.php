@@ -100,4 +100,52 @@ class Medecin
         //extraction des données 
         return $select->fetch();
     }
+
+public function searchMesPatients($filtre)
+{
+    // On récupère l'id du médecin connecté
+    $idMedecin = $_SESSION['idmedecin'];
+
+    // Requête SQL pour obtenir les patients ayant un rdv avec ce médecin et correspondant au filtre
+    $requete = "
+        SELECT DISTINCT p.*
+        FROM patient p
+        INNER JOIN rdv r ON p.idpatient = r.idpatient
+        WHERE r.idmedecin = :idmedecin
+        AND (p.nom LIKE :filtre OR p.prenom LIKE :filtre)
+    ";
+
+    // Préparation de la requête
+    $select = $this->bdd->prepare($requete);
+
+    // Exécution avec les paramètres
+    $select->execute([
+        'idmedecin' => $idMedecin,
+        'filtre' => '%' . $filtre . '%'
+    ]);
+
+    // Extraction des données
+    $mesPatients = $select->fetchAll();
+
+    return $mesPatients;
+}
+public function getAllMedecins() {
+    $requete = "SELECT m.*, s.categorie as specialite, l.nom as lieu 
+                FROM medecin m 
+                LEFT JOIN specialite s ON m.idspecialite = s.idspecialite 
+                LEFT JOIN lieu l ON m.idlieu = l.idlieu";
+    $select = $this->bdd->prepare($requete);
+    $select->execute();
+    return $select->fetchAll();
+}
+
+public function updateStatutMedecin($idmedecin, $statut) {
+    $requete = "UPDATE medecin SET statut = :statut WHERE idmedecin = :idmedecin";
+    $select = $this->bdd->prepare($requete);
+    $select->execute([
+        ':statut' => $statut,
+        ':idmedecin' => $idmedecin
+    ]);
+}
+
 }

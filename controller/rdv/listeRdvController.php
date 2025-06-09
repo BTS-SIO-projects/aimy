@@ -1,11 +1,11 @@
 <?php
 
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy_new/model/patientModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy_new/model/rdvModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy_new/model/medecinModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy_new/model/lieuModel.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy_new/bdd/bdd.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/aimy_new/model/documentModel.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/patientModel.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/rdvModel.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/medecinModel.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/lieuModel.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/aimy/bdd/bdd.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/aimy/model/documentModel.php');
 
 $rdv = new Rdv($bdd);
 $patient = new Patient($bdd);
@@ -33,7 +33,7 @@ if (isset($_POST['action'])) {
             if (isset($_POST['idrdv']) && !empty($_POST['idrdv'])) {
                 $document->supprimerDocuments($_POST['idrdv']);
                 $rdv->supprimerRdv($_POST['idrdv']);
-                //                header('Location:http://localhost/aimy_new/index.php?page=liste_rdv');
+                //                header('Location:http://localhost/aimy/index.php?page=liste_rdv');
                 header("Location: ../../index.php?page=liste_rdv");
             }
             break;
@@ -52,7 +52,7 @@ if (isset($_POST['action'])) {
             break;
     }
 
-    //    header('Location:http://localhost/aimy_new/index.php?page=liste_rdv');
+    //    header('Location:http://localhost/aimy/index.php?page=liste_rdv');
     header("Location: ../../index.php?page=liste_rdv");
 
     exit;

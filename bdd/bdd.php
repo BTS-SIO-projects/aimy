@@ -4,7 +4,7 @@
 try {
     $user = "root";
     $pass = "";
-    $bdd = new PDO('mysql:host=localhost;dbname=aimy', $user, $pass);
+    $bdd = new PDO('mysql:host=localhost;dbname=AIMY', $user, $pass);
 } catch (PDOException $e) {
     print "Erreur! :" . $e->getMessage() .
         "<br/>";

@@ -96,5 +96,43 @@ include('controller/lieu/selectAllLieux.php');
             <button type="submit" name="ConnexionMedecin">Se connecter !</button>
         </form>
     </div>
+    
+    <!-- Lien de connexion administrateur -->
+    <div class="admin-link">
+        <a href="index.php?page=admin_login" id="adminLink">
+            Connexion Administrateur
+        </a>
+    </div>
 
 </div>
+
+<style>
+.admin-link {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+#adminLink {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid #2a9d8f;
+    border-radius: 8px;
+    background-color: white;
+    color: #2a9d8f;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+#adminLink:hover {
+    background-color: #2a9d8f;
+    color: white;
+}
+
+#adminLink:active {
+    background-color: #2a9d8f;
+}
+</style>
