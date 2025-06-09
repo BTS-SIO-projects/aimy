@@ -1,5 +1,5 @@
 <div class="home">
-    <h3><span><i class="fas fa-stethoscope"></i> AIMY :</span> au service de santé</h3>
+    <h3><span><i class="fas fa-stethoscope"></i> AIMY :</span> service de santé</h3>
     <?php
     if (isset($_SESSION['idpatient']) || isset($_SESSION['idmedecin'])) {
         $role = isset($_SESSION['idpatient']) ? "Patient" : (isset($_SESSION['idmedecin']) ? "Médecin" : "Utilisateur");
