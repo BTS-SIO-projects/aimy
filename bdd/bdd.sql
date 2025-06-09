@@ -100,36 +100,13 @@ CREATE TABLE administrateur (
     PRIMARY KEY (idAdministrateur)
 );
 /*
-CREATE TABLE medicament (
-    idmedicament INT(3) NOT NULL AUTO_INCREMENT,
-    libelle VARCHAR(50),
-    laboratoire VARCHAR(50),
-    PRIMARY KEY (idmedicament)
-);
+commande pour valider le statut du medecin 
+select *from medecin; 
 
-CREATE TABLE prescription (
-    idprescription INT(3) NOT NULL AUTO_INCREMENT,
-    dateprescription DATE,
-    description VARCHAR(50),
-    idmedecin INT(3),
-    idpatient INT(3),
-    PRIMARY KEY (idprescription), 
-    FOREIGN KEY (idmedecin) REFERENCES medecin(idmedecin),
-    FOREIGN KEY (idpatient) REFERENCES patient(idpatient)
-);
+UPDATE medecin
+SET statut = 'valider'
+WHERE idmedecin = 'TON_ID';
 
-CREATE TABLE prescrire (
-    idmedicament INT(3),
-    idprescription INT(3),
-    qte INT,
-    posologie VARCHAR(50),
-    duree VARCHAR(50),
-    PRIMARY KEY (idmedicament,idprescription),
-    FOREIGN KEY (idmedicament) REFERENCES medicament(idmedicament),
-    FOREIGN KEY (idprescription) REFERENCES prescription(idprescription)
-);
-*/
-/*
 INSERT INTO specialite (categorie) VALUES 
 ('Cardiologie'),
 ('Neurologie'),
