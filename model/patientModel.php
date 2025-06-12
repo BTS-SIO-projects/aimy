@@ -133,4 +133,17 @@ class Patient
         //extraction des données 
         return $select->fetch();
     }
+
+    public function existeDeja($nom, $prenom, $email, $numeroSecu)
+    {
+        $sql = "SELECT COUNT(*) FROM patient WHERE nom = :nom OR prenom = :prenom OR email = :email OR numeroSecu = :numeroSecu";
+        $stmt = $this->bdd->prepare($sql);
+        $stmt->execute([
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'email' => $email,
+            'numeroSecu' => $numeroSecu
+        ]);
+        return $stmt->fetchColumn() > 0;
+    }
 }

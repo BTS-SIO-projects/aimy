@@ -100,4 +100,16 @@ class Medecin
         //extraction des données 
         return $select->fetch();
     }
+
+    public function existeDeja($nom, $prenom, $email)
+    {
+        $sql = "SELECT COUNT(*) FROM medecin WHERE nom = :nom OR prenom = :prenom OR email = :email";
+        $stmt = $this->bdd->prepare($sql);
+        $stmt->execute([
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'email' => $email
+        ]);
+        return $stmt->fetchColumn() > 0;
+    }
 }

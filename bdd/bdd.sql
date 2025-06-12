@@ -2,6 +2,18 @@ DROP DATABASE IF EXISTS aimy;
 CREATE DATABASE aimy;
 USE aimy;
 
+CREATE TABLE message (
+    idmessage INT(3) NOT NULL AUTO_INCREMENT,
+    titre VARCHAR(50),
+    description TEXT,
+    idmedecin INT NOT NULL,
+    idpatient INT NOT NULL,
+    PRIMARY KEY (idmessage),
+    FOREIGN KEY (idmedecin) REFERENCES medecin(idmedecin),
+    FOREIGN KEY (idpatient) REFERENCES patient(idpatient)
+);
+
+
 CREATE TABLE specialite (
     idspecialite INT(3) NOT NULL AUTO_INCREMENT,
     categorie VARCHAR(50),
@@ -111,12 +123,12 @@ INSERT INTO specialite (categorie) VALUES
 ('Cardiologie'),
 ('Neurologie'),
 ('Dermatologie'),
-('Pédiatrie'),
+('Pediatrie'),
 ('Orthopédie');
 INSERT INTO lieu (nom, adresse, typeLieu) VALUES 
-('Hopital Central', '123 Avenue Pris', 'Hopital'),
-('Clinique des Lilas', '45 courbevoi', 'Clinique '),
-('Centre Médical Soleil', '12  clichy', 'Centre '),
-('hopital paris', '78 Rue luis', 'hopital'),
-('Cabinet Dr. Lemoine', '9 Place clichy', 'Cabinet');
+('Delafontaine', '12 Avenue de Paris', 'Hopital'),
+('Lilas', '45 carrefour Sebastopol', 'Clinique'),
+('Soleil', '12  clichy', 'Centre'),
+('paris', '78 Rue Louis', 'Hopital'),
+('Dr. Lemoine', '9 Place de Clichy', 'Cabinet');
 */

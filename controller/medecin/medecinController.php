@@ -52,38 +52,41 @@ class MedecinController
     public function create()
     {
 
-        //verif
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $secondPassword = $_POST['secondpassword'];
-        $file = $_FILES['photo']['tmp_name'];
-        $fileName = $_FILES['photo']['name'];
-        $fileType = $_FILES['photo']['type'];
-        $fileContent = file_get_contents($file);
-        //on vérifie si le patient et si les infos sont conformes
-        $unMedecin = $this->medecin->connexionMedecin($email, $password);
-        //var_dump($unPatient);
-        if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['secondpassword']) && isset($_POST['telephone']) && isset($_POST['specialite'])) {
-            if ($unMedecin == null) {
-                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    if ($password == $secondPassword) {
-                        $hashedPassword = PasswordCache($password);
-                        //insertion du medecin
-                        $this->medecin->ajouterMedecin($_POST, $hashedPassword, $fileContent);
-                        echo ("<p> Votre demande d'inscription sera prise en charge sous 48 heures.</p>");
-                        header('Location: ../../index.php?success=medecin_added');
-                        exit();
-                    } else {
-                        echo "Les mots de passes ne correspondent pas.";
-                    }
-                } else {
-                    echo "L'adresse email n'est pas valide.";
-                }
+        // Récupération des données
+        $nom = trim($_POST['nom'] ?? '');
+        $prenom = trim($_POST['prenom'] ?? '');
+        $email = trim($_POST['email'] ?? '');
+        $password = $_POST['password'] ?? '';
+        $secondPassword = $_POST['secondpassword'] ?? '';
+        $telephone = $_POST['telephone'] ?? '';
+        $specialite = $_POST['specialite'] ?? '';
+
+        $file = $_FILES['photo']['tmp_name'] ?? null;
+        $fileContent = $file ? file_get_contents($file) : null;
+
+        if ($nom === '' || $prenom === '' || $email === '' || $password === '' || $secondPassword === '' || $telephone === '' || $specialite === '') {
+            echo "Veuillez remplir tous les champs.";
+            return;
+        }
+
+        if ($this->medecin->existeDeja($nom, $prenom, $email)) {
+            echo "Un médecin avec ce nom, prénom ou email existe déjà.";
+            return;
+        }
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            if ($password == $secondPassword) {
+                $hashedPassword = PasswordCache($password);
+                //insertion du medecin
+                $this->medecin->ajouterMedecin($_POST, $hashedPassword, $fileContent);
+                echo ("<p> Votre demande d'inscription sera prise en charge sous 48 heures.</p>");
+                header('Location: ../../index.php?success=medecin_added');
+                exit();
             } else {
-                echo "l'email est déjà utilisé.";
+                echo "Les mots de passes ne correspondent pas.";
             }
         } else {
-            echo "veuillez remplir tous les champs.";
+            echo "L'adresse email n'est pas valide.";
         }
     }
 

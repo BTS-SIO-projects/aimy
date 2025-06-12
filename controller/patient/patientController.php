@@ -57,6 +57,11 @@ class PatientController
         //on vérifie si le patient et si les infos sont conformes
         $unPatient = $this->patient->connexionPatient($numeroSecu, $password);
 
+        if ($this->patient->existeDeja($nom, $prenom, $email, $numeroSecu)) {
+            echo "Un patient avec ce nom, prénom, email ou numéro de Sécurité sociale existe déjà.";
+            return;
+        }
+
         if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['age']) && isset($_POST['email']) && isset($_POST['password'])  && isset($_POST['secondpassword']) && isset($_POST['telephone']) && isset($_POST['adresse']) && isset($_POST['numeroSecu'])) {
             if ($unPatient == null) {
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -76,7 +81,9 @@ class PatientController
                                 //une fois ajouté le patient on recupere les info du patient avec son email
                                 $getPatient = $this->patient->selectPatientByEmail($email);
                                 $_SESSION['idpatient'] = $getPatient['idpatient'];
-                                $_SESSION['numeroSecu'] = $unPatient['numeroSecu'];
+                                //        var_dump($unPatient['numeroSecu']);
+                                //        die();
+                                $_SESSION['numeroSecu'] = $_POST['numeroSecu'];
                                 //creation d'une session
                                 $_SESSION['nom'] = $nom;
                                 $_SESSION['prenom'] = $prenom;

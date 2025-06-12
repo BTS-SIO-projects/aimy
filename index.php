@@ -52,6 +52,8 @@ switch ($page) {
         include('model/patientModel.php');
         include('controller/medecin/selectAllMedecins.php');
         include('view/medecin/liste_patients.php');
+        include('model/messageModel.php');
+        include('controller/message/messageController.php');
         break;
 
     case 'document':
@@ -74,7 +76,9 @@ switch ($page) {
         include('model/lieuModel.php');
         include('model/documentModel.php');
         include('model/specialiteModel.php');
+        include('model/messageModel.php');
         include('controller/rdv/listeRdvController.php');
+        include('controller/message/messageController.php');
         include('view/commun/profil.php');
         break;
 

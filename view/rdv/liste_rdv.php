@@ -4,7 +4,13 @@
 
     ?>
  <center class="table-container">
-     <?php if (count($lesRdvs) != 0) {  ?>
+     <?php
+
+        if (isset($_SESSION['success_message'])) {
+            echo '<div class="success" style="color: green; font-weight: bold;">' . htmlspecialchars($_SESSION['success_message']) . '</div>';
+            unset($_SESSION['success_message']); // Supprime le message pour qu'il n'apparaisse qu'une fois
+        }
+        if (count($lesRdvs) != 0) {  ?>
          <h3>Liste des Rendez-Vous</h3>
          <p>Nombre total de rendez-vous : <strong><?php echo count($lesRdvs); ?></strong></p>
          <!--
